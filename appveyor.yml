@@ -1,22 +1,6 @@
-# Use Windows Server 2019 environment
-os: Windows Server 2019
+before_build:
+  - nuget restore
 
-# Specify the platform
-platform:
-  - x64
-
-# Install dependencies and set up environment
-install:
-  # Install .NET Core SDK
-  - ps: choco install dotnetcore-sdk --yes
-
-# Build script
-build_script:
-  # Restore dependencies and build the solution
-  - dotnet restore
-  - dotnet build
-
-# Test script
-test_script:
-  # Run unit tests
-  - dotnet test
+build:
+  verbosity: minimal
+  publish_wap: true
