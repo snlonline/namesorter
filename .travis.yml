@@ -1,0 +1,6 @@
+language: c#
+sdk:
+  -sdk 8.0
+script: dotnet run
+notification:
+  email: sanelenetwork@gmail.com
