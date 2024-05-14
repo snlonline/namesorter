@@ -1,6 +1,22 @@
-language: c#
-sdk:
-  -sdk 8.0
-script: dotnet run
-notification:
-  email: sanelenetwork@gmail.com
+# Use Windows Server 2019 environment
+os: Windows Server 2019
+
+# Specify the platform
+platform:
+  - x64
+
+# Install dependencies and set up environment
+install:
+  # Install .NET Core SDK
+  - ps: choco install dotnetcore-sdk --yes
+
+# Build script
+build_script:
+  # Restore dependencies and build the solution
+  - dotnet restore
+  - dotnet build
+
+# Test script
+test_script:
+  # Run unit tests
+  - dotnet test
