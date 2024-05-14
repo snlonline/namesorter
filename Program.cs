@@ -15,14 +15,14 @@ internal class Program
         WriteFileLines(sortedNamesFilePath, names);
     }
 
-    private static string GetRelativeFilePath(string fileName)
+    public static string GetRelativeFilePath(string fileName)
     {
         var currentDirectory = Directory.GetCurrentDirectory();
         var relativePath = Path.Combine("..", "..", "..", fileName);
         return Path.GetFullPath(Path.Combine(currentDirectory, relativePath));
     }
 
-    private static string[] ReadFileLines(string filePath)
+    public static string[] ReadFileLines(string filePath)
     {
         try
         {
@@ -38,7 +38,7 @@ internal class Program
         }
     }
 
-    private static void WriteFileLines(string filePath, string[] lines)
+    public static void WriteFileLines(string filePath, string[] lines)
     {
         try
         {
@@ -50,7 +50,7 @@ internal class Program
         }
     }
 
-    private static int CompareNames(string x, string y)
+    public static int CompareNames(string x, string y)
     {
         var xParts = x.Split(' ');
         var yParts = y.Split(' ');
