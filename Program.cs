@@ -7,6 +7,8 @@ class Program
         string unsortedNamesFilePath = GetRelativeFilePath("unsorted-names-list.txt");
         string[] names = ReadFileLines(unsortedNamesFilePath);
         
+        Array.Sort(names, CompareNames);
+        
         foreach (string name in names)
         {
             Console.WriteLine(name);
@@ -49,5 +51,28 @@ class Program
         {
             Console.WriteLine($"An error occurred while writing to the file: {ex.Message}");
         }
+    }
+    static int CompareNames(string x, string y)
+    {
+        string[] xParts = x.Split(' ');
+        string[] yParts = y.Split(' ');
+
+        int lastNameComparison = String.Compare(xParts.Last(), yParts.Last(), StringComparison.Ordinal);
+        if (lastNameComparison != 0)
+        {
+            return lastNameComparison;
+        }
+
+        int minNamesCount = Math.Min(xParts.Length - 1, yParts.Length - 1);
+        for (int i = 0; i < minNamesCount; i++)
+        {
+            int nameComparison = String.Compare(xParts[i], yParts[i], StringComparison.Ordinal);
+            if (nameComparison != 0)
+            {
+                return nameComparison;
+            }
+        }
+
+        return xParts.Length.CompareTo(yParts.Length);
     }
 }
