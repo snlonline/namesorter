@@ -1,3 +1,15 @@
+image: Visual Studio 2022
+
+environment:
+  matrix:
+    - DOTNET_SDK_VERSION: "8.0.0" Scify the desired version of .NET SDK
+
+install:
+  - ps: dotnet tool install --global dotnet-sonarscanner
+  - ps: dotnet tool install --global coverlet.console
+
+  # Install specific version of .NET SDK
+  - ps: choco install dotnetcore-sdk --version 8.0.0
+
 build:
-  verbosity: minimal
   project: namesorter.sln
