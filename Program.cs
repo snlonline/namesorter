@@ -1,70 +1,22 @@
-﻿namespace namesorter;
+﻿using System;
+using System.IO;
+using namesorter; // Make sure to include the namespace where SortNames class is defined
 
-internal class Program
+namespace namesorter
 {
-    private static void Main(string[] args)
+    internal class Program
     {
-        var unsortedNamesFilePath = GetRelativeFilePath("unsorted-names-list.txt");
-        var names = ReadFileLines(unsortedNamesFilePath);
-
-        Array.Sort(names, CompareNames);
-
-        foreach (var name in names) Console.WriteLine(name);
-
-        var sortedNamesFilePath = GetRelativeFilePath("sorted-names-list.txt");
-        WriteFileLines(sortedNamesFilePath, names);
-    }
-
-    public static string GetRelativeFilePath(string fileName)
-    {
-        var currentDirectory = Directory.GetCurrentDirectory();
-        var relativePath = Path.Combine("..", "..", "..", fileName);
-        return Path.GetFullPath(Path.Combine(currentDirectory, relativePath));
-    }
-
-    public static string[] ReadFileLines(string filePath)
-    {
-        try
+        private static void Main(string[] args)
         {
-            if (File.Exists(filePath)) return File.ReadAllLines(filePath);
+            var unsortedNamesFilePath = SortNames.GetRelativeFilePath("unsorted-names-list.txt");
+            var names = SortNames.ReadFileLines(unsortedNamesFilePath);
 
-            Console.WriteLine($"File not found: {filePath}");
-            return Array.Empty<string>();
+            Array.Sort(names, SortNames.CompareNames);
+
+            foreach (var name in names) Console.WriteLine(name);
+
+            var sortedNamesFilePath = SortNames.GetRelativeFilePath("sorted-names-list.txt");
+            SortNames.WriteFileLines(sortedNamesFilePath, names);
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-            return Array.Empty<string>();
-        }
-    }
-
-    public static void WriteFileLines(string filePath, string[] lines)
-    {
-        try
-        {
-            File.WriteAllLines(filePath, lines);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred while writing to the file: {ex.Message}");
-        }
-    }
-
-    public static int CompareNames(string x, string y)
-    {
-        var xParts = x.Split(' ');
-        var yParts = y.Split(' ');
-
-        var lastNameComparison = string.Compare(xParts.Last(), yParts.Last(), StringComparison.Ordinal);
-        if (lastNameComparison != 0) return lastNameComparison;
-
-        var minNamesCount = Math.Min(xParts.Length - 1, yParts.Length - 1);
-        for (var i = 0; i < minNamesCount; i++)
-        {
-            var nameComparison = string.Compare(xParts[i], yParts[i], StringComparison.Ordinal);
-            if (nameComparison != 0) return nameComparison;
-        }
-
-        return xParts.Length.CompareTo(yParts.Length);
     }
 }
