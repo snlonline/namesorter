@@ -10,7 +10,7 @@ install:
       dotnet tool install --global coverlet.console
 
   # Install specific version of .NET SDK
-  - ps: choco install dotnetcore-sdk
+  - ps: choco install dotnetcore-sdk --lts
 
 build:
   project: namesorter.sln    
