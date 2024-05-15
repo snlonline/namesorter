@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "namesorter", "namesorter.csproj", "{C316DF46-A47C-4AB5-A496-0DB6AAC2F16E}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "namesorter", "namesorter.csproj", "{C316DF46-A47C-4AB5-A496-0DB6AAC2F16E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\Tests\Tests.csproj", "{9EF8FD7B-C43F-4046-84D3-DE81EAB23050}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{C316DF46-A47C-4AB5-A496-0DB6AAC2F16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C316DF46-A47C-4AB5-A496-0DB6AAC2F16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C316DF46-A47C-4AB5-A496-0DB6AAC2F16E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EF8FD7B-C43F-4046-84D3-DE81EAB23050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF8FD7B-C43F-4046-84D3-DE81EAB23050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF8FD7B-C43F-4046-84D3-DE81EAB23050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF8FD7B-C43F-4046-84D3-DE81EAB23050}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD512666-AF11-4E8D-9A53-5998A7A55940}
 	EndGlobalSection
 EndGlobal
