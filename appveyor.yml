@@ -1,9 +1,3 @@
-before_build:
-  - nuget restore
-
-environment:
-  DOTNET_SDK_VERSION: 8.0
-
 build:
   verbosity: minimal
   project: namesorter.sln
